@@ -11,10 +11,17 @@ class SectionsController < ApplicationController
   end
 
   def update_admin
-    @section = Section.find_by(number: params[:number])
+    @section = Section.find_by(section_number: params[:section_number])
     if @section.update(params[:section])
       flash[:notice] = "Your section was updated."
       redirect_to("/admin")
     end
+  end
+
+  def destroy_admin
+    @section = Section.find_by(section_number: params[:section_number])
+    @section.destroy
+    flash[:notice] = "Section deleted."
+    redirect_to("/admin")
   end
 end

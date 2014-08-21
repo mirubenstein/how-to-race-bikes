@@ -12,5 +12,4 @@ describe Lesson do
     next_lesson = Lesson.create({name: 'lesson2', number: 3, lesson: 'stuff'})
     current_lesson.next.should eq next_lesson
   end
-
 end
