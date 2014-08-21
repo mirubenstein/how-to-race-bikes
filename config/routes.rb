@@ -2,7 +2,7 @@ HowToRaceBikes::Application.routes.draw do
   match('/', {via: :get, to: 'lessons#index'})
   match('/lessons/:number', {via: :get, to: 'lessons#show'})
   match('/admin/lessons/:number', {via: [:patch, :put], to: 'lessons#update_admin'})
-
+  match('/admin/sections/:number', {via: [:patch, :put], to: 'sections#update_admin'})
   match('/admin', {via: :get, to: 'admin#index'})
   match('/admin/lessons', {via: :post, to: 'lessons#create_admin'})
   match('/admin/sections', {via: :post, to: 'sections#create_admin'})
