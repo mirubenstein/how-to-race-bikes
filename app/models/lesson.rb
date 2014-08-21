@@ -1,3 +1,6 @@
 class Lesson < ActiveRecord::Base
-  validates_presence_of :name
+  validates :name, presence: true
+  validates :lesson, presence: true
+  validates :number, presence: true
+  validates :number, numericality: true
 end
