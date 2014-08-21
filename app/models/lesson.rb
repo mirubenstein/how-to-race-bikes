@@ -14,4 +14,9 @@ class Lesson < ActiveRecord::Base
     Lesson.find_by(number: self.number - 1)
   end
 
+  def self.list_by_section(id)
+    lessons = []
+    Lesson.where(section_id: id).each { |lesson| lessons << lesson }
+    lessons
+  end
 end

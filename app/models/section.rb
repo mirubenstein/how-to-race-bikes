@@ -4,5 +4,4 @@ class Section < ActiveRecord::Base
   validates :number, presence: true
   validates :number, numericality: true
   has_many :lessons
-
 end
