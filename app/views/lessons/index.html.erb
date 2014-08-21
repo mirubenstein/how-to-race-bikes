@@ -1,7 +1,9 @@
+<% content_for(:title, "Learn How to Race Bikes") %>
+
 <h1>Lessons</h1>
 
 <ul>
   <% @lessons.each do |lesson| %>
-    <li><%= lesson.name %></li>
+    <a href="/lessons/<%= lesson.id%>"><li><%= lesson.name %></li></a>
   <% end %>
 </ul>
