@@ -4,7 +4,7 @@
 
 <ul>
   <% @lessons.each do |lesson| %>
-    <form action="/admin/lessons/<%= lesson.number %>" method="post">
+    <form id = 'list' action="/admin/lessons/<%= lesson.number %>" method="post">
       <input name="_method" type="hidden" value="patch">
       <label for="lesson_name">Name</label>
       <input id="lesson_name" name="lesson[name]" type="text" value="<%= lesson.name %>">
@@ -12,6 +12,13 @@
       <textarea rows="3" cols="25" id="lesson_text" name="lesson[lesson]" type="text"><%= lesson.lesson %></textarea>
       <label for="lesson_number">Number</label>
       <input id="lesson_number" name="lesson[number]" type="number" value="<%= lesson.number %>">
+      <label for="section">Section</label>
+      <select form = 'list' name="lesson[section_id]">
+        <% @sections.each do |section| %>
+          <% section.name == lesson.section.name ? selected = "selected = #{section.name}" : selected = '' %>
+          <option <%= selected %> value="<%= section.id %>"><%= section.name %></option>
+        <% end %>
+      </select>
       <button>Update Lesson</button>
     </form>
 
@@ -33,12 +40,36 @@
   </ul>
 <% end %>
 
-<form action="/admin" method="post">
+<form id= 'add'action="/admin/lessons" method="post">
   <label for="lesson_name">Name</label>
   <input id="lesson_name" name="lesson[name]" type="text" value="<%= @lesson.name %>">
   <label for="lesson_text">Text</label>
   <textarea rows="3" cols="25" id="lesson_text" name="lesson[lesson]" type="text" value="<%= @lesson.lesson %>"></textarea>
   <label for="lesson_number">Number</label>
   <input id="lesson_number" name="lesson[number]" type="number" value="<%= @lesson.number %>">
+  <select form= 'add' name="lesson[section_id]">
+        <% @sections.each do |section| %>
+          <option value="<%= section.id %>"><%= section.name %></option>
+        <% end %>
+      </select>
   <button>Create Lesson</button>
+</form>
+
+<h2>Create New Section</h2>
+
+<% if @section.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @section.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/admin/sections" method="post">
+  <label for="section_name">Name</label>
+  <input id="section_name" name="section[name]" type="text" value="<%= @section.name %>">
+  <label for="section_number">Number</label>
+  <input id="section_number" name="section[number]" type="number" value="<%= @section.number %>">
+  <button>Create Section</button>
 </form>
