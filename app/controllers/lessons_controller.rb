@@ -42,4 +42,11 @@ class LessonsController < ApplicationController
       render('lessons/show-admin.html.erb')
     end
   end
+
+  def destroy_admin
+    @lesson = Lesson.find(params[:id])
+    @lesson.destroy
+    flash[:notice] = "Lesson deleted."
+    redirect_to("/admin")
+  end
 end

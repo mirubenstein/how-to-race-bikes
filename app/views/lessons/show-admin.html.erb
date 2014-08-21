@@ -20,4 +20,8 @@
   <button>Update Lesson</button>
 </form>
 
+<a href="/admin/lessons/<%= @lesson.id %>"
+   data-confirm="You sure?"
+   data-method="delete"
+   rel="nofollow">Delete</a>
 <a href="/admin">Return to Lessons</a>
