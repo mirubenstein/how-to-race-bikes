@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: how_race_bikes_development
+
+test:
+  adapter: postgresql
+  database: how_race_bikes_test
