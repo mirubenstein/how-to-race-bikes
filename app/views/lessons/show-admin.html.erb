@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<form action="/admin/lessons/<%= @lesson.id %>" method="post">
+<form action="/admin/lessons/<%= @lesson.number %>" method="post">
   <input name="_method" type="hidden" value="patch">
   <label for="lesson_name">Name</label>
   <input id="lesson_name" name="lesson[name]" type="text" value="<%= @lesson.name %>">
@@ -20,8 +20,9 @@
   <button>Update Lesson</button>
 </form>
 
-<a href="/admin/lessons/<%= @lesson.id %>"
+<a href="/admin/lessons/<%= @lesson.number %>"
    data-confirm="You sure?"
    data-method="delete"
    rel="nofollow">Delete</a>
-<a href="/admin">Return to Lessons</a>
+
+<p><a href="/admin">Return to Lessons</a></p>

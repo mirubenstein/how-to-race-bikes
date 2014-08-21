@@ -5,3 +5,12 @@
 <p><%= @lesson.lesson %></p>
 
 <a href="/">Return to Lessons</a>
+<p>
+<% if !@prev_lesson.nil? %>
+  <a href="/lessons/<%= @prev_lesson.number %>">Previous Lesson</a>
+<% end %>
+
+<% if !@next_lesson.nil? %>
+  <a href="/lessons/<%= @next_lesson.number %>">Next Lesson</a>
+<% end %>
+</p>
