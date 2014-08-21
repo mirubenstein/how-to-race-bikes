@@ -4,6 +4,7 @@ class Lesson < ActiveRecord::Base
   validates :lesson, presence: true
   validates :number, presence: true
   validates :number, numericality: true
+  belongs_to :section
 
   def next
     Lesson.find_by(number: self.number + 1)

@@ -9,17 +9,19 @@ class LessonsController < ApplicationController
     render('lessons/index-admin.html.erb')
   end
 
-  def new_admin
-    @lesson = Lesson.new
-    render('lessons/new-admin.html.erb')
-  end
+  # def new_admin
+  #   @lesson = Lesson.new
+  #   render('lessons/new-admin.html.erb')
+  # end
 
   def create_admin
+    @lesson = Lesson.new
     @lesson = Lesson.new(params[:lesson])
     if @lesson.save
+      flash[:notice] = "Lesson created."
       redirect_to("/admin")
     else
-      render('lessons/show-admin.html.erb')
+      render('admin/index.html.erb')
     end
   end
 
