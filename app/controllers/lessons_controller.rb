@@ -41,7 +41,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by(number: params[:number])
     if @lesson.update(params[:lesson])
       flash[:notice] = "Your lesson was updated."
-      redirect_to("/admin/lessons/#{@lesson.number}")
+      redirect_to("/admin")
     else
       render('lessons/show-admin.html.erb')
     end
